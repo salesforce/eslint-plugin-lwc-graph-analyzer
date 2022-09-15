@@ -1,0 +1,81 @@
+{
+    "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
+    "version": "0.0.2",
+    "description": "ESLint plugin to analyze data graph in a LWC component",
+    "contributors": [
+        {
+            "name": "Andrew Huffman",
+            "url": "https://github.com/AndrewHuffman"
+        },
+        {
+            "name": "Kevin Hawkins",
+            "url": "https://github.com/khawkins"
+        },
+        {
+            "name": "Meisam Seyed Aliroteh",
+            "url": "https://github.com/maliroteh-sf"
+        },
+        {
+            "name": "Takashi Arai",
+            "url": "https://github.com/sfdctaka"
+        },
+        {
+            "name": "Peter Van Dyk",
+            "url": "https://github.com/pvandyk"
+        },
+        {
+            "name": "Dustin Breese",
+            "url": "https://github.com/dbreese"
+        }
+    ],
+    "homepage": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer.git"
+    },
+    "main": "lib/index.js",
+    "directories": {
+        "lib": "lib",
+        "rules": "lib/rules",
+        "test": "test"
+    },
+    "files": [
+        "/lib",
+        "!**/test/"
+    ],
+    "devDependencies": {
+        "@babel/eslint-parser": "7.18.2",
+        "prettier": "^2.6.2",
+        "jest": "^28.1.1",
+        "jest-extended": "^2.0.0",
+        "jest-chain": "^1.1.5",
+        "jest-junit": "^13.2.0",
+        "jest-sonar-reporter": "^2.0.0",
+        "eslint": "^8.19.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-eslint-plugin": "^4.2.0",
+        "chai": "^4.3.6"
+    },
+    "dependencies": {
+        "@komaci/static-analyzer": "^240.1.5",
+        "@lwc/metadata": "2.19.0"
+    },
+    "scripts": {
+        "format": "prettier --write \"**/*.{js,json,md}\"",
+        "lint": "eslint lib test",
+        "test": "yarn jest --coverage"
+    },
+    "jestSonar": {
+        "sonar56x": true,
+        "reportPath": "reports/coverage",
+        "reportFile": "sonar-report.xml",
+        "indent": 4
+    },
+    "prettier": {
+        "printWidth": 100,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "none"
+    }
+}
