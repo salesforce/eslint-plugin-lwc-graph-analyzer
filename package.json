@@ -77,5 +77,12 @@
         "tabWidth": 4,
         "singleQuote": true,
         "trailingComma": "none"
+    },
+    "engines": {
+        "node": ">=14"
+    },
+    "volta": {
+        "node": "16.17.1",
+        "yarn": "1.22.19"
     }
 }
