@@ -1,5 +1,5 @@
-name: tests-on-branches
-run-name: Installs project and runs tests, on repo branches
+name: run-tests
+run-name: Installs project and runs tests
 on: [ push, pull_request ]
 jobs:
   run-tests-nix:
