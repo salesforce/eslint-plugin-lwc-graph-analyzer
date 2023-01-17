@@ -5,12 +5,13 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-import { LightningElement, track } from 'lwc';
+import { LightningElement } from 'lwc';
 
 export default class App extends LightningElement {
-    @track prop = ['prop'];
+    prop = ['prop'];
 
     get unresolvableGetter() {
+        this.prop = 'food';
         return this.prop;
     }
 }

@@ -7,6 +7,9 @@
 
 'use strict';
 
+//no-composition-on-unanalyzable-getter-property
+//no-assignment-expression-assigns-value-to-member-variable
+
 const { assert } = require('chai');
 const { lintBundle } = require('../helper');
 
@@ -16,7 +19,7 @@ describe('Bundle linting', function () {
         assert.equal(messages.length, 1);
         assert.equal(
             messages[0].message,
-            "This conditional acts upon an unanalyzable property 'title' that is not a public property"
+            "This iterator iterates upon an unanalyzable getter property 'unresolvableGetter'"
         );
     });
 });

@@ -58,8 +58,12 @@
         "chai": "^4.3.7"
     },
     "dependencies": {
-        "@komaci/static-analyzer": "^240.1.5",
-        "@lwc/metadata": "2.19.0"
+        "@komaci/static-analyzer": "^242.3.2",
+        "@lwc/metadata": "2.22.0-0",
+        "@lwc/sfdc-compiler-utils": "2.22.0-0",
+        "@lwc/errors": "2.22.0",
+        "@lwc/template-compiler": "2.22.0",
+        "@babel/core": "^7.20.2"
     },
     "scripts": {
         "format": "prettier --write \"**/*.{js,json,md}\"",

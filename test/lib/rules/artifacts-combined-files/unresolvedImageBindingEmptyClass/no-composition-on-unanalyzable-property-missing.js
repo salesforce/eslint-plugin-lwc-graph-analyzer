@@ -13,14 +13,10 @@ const { lintBundle } = require('../helper');
 describe('Bundle linting', function () {
     it('should return correct errors', function () {
         const messages = lintBundle(__filename, 'test.html');
-        assert.equal(messages.length, 2);
+        assert.equal(messages.length, 1);
         assert.equal(
             messages[0].message,
-            "Image tag references in its source attribute the unanalyzable property 'propUnresolvable'"
-        );
-        assert.equal(
-            messages[1].message,
-            "Image tag references in its source attribute the unanalyzable property 'otherUnr'"
+            "This image's src attribute is bound to a property 'testSrc' which does not exist in the corresponding script file"
         );
     });
 });
