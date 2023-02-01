@@ -26,7 +26,4 @@ export default class WireFunction extends LightningElement {
     }
 
     propUnresolvable = sneaky`normal string`; // unresolvable property
-
-    @api
-    otherUnr = 5 + 5; // unresolvable property
 }
