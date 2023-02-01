@@ -7,9 +7,6 @@
 
 'use strict';
 
-//no-composition-on-unanalyzable-getter-property
-//no-assignment-expression-assigns-value-to-member-variable
-
 const { assert } = require('chai');
 const { lintBundle } = require('../helper');
 
