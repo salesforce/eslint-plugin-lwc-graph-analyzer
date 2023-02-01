@@ -66,7 +66,8 @@
         "@babel/core": "^7.20.2"
     },
     "scripts": {
-        "format": "prettier --write \"**/*.{js,json,md}\"",
+        "format": "prettier --list-different \"**/*.js\"",
+        "format:fix": "prettier --write \"**/*.{js,json}\"",
         "lint": "eslint lib test",
         "test": "yarn jest --coverage"
     },
