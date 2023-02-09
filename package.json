@@ -32,7 +32,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer.git"
+        "url": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer"
     },
     "main": "lib/index.js",
     "directories": {
