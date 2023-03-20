@@ -60,7 +60,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `The wire adapter 'invalidWire' of resource 'lightning/uiAppsApi' cannot be primed`
+                        message: `The wire adapter 'invalidWire' of resource 'lightning/uiAppsApi' can’t be primed.`
                     }
                 ]
             }

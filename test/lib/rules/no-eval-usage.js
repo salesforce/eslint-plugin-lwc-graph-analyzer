@@ -51,7 +51,7 @@ ruleTester.run('@salesforce/lwc-graph-analyzer/no-eval-usage', allRules.rules['n
             filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
             errors: [
                 {
-                    message: `Call expression contains non-portable identifier 'eval'`
+                    message: `This call expression contains a non-portable identifier: 'eval'.`
                 }
             ]
         }

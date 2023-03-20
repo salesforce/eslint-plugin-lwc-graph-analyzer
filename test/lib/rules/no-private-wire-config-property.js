@@ -32,10 +32,10 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `This wire configuration uses a property 'recordId1' that is private`
+                        message: `This wire configuration uses a property 'recordId1' that is private.`
                     },
                     {
-                        message: `This wire configuration uses a property 'recordId1' that is private`
+                        message: `This wire configuration uses a property 'recordId1' that is private.`
                     }
                 ]
             }

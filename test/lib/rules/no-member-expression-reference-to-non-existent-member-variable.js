@@ -48,7 +48,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Member expression contains reference to non-existent member variable 'tempMemberVar'`
+                        message: `This member expression references a member variable that doesn’t exist: 'tempMemberVar'.`
                     }
                 ]
             }

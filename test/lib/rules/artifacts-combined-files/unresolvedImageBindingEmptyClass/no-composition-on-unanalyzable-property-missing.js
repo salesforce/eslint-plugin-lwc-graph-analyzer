@@ -16,7 +16,7 @@ describe('Bundle linting', function () {
         assert.equal(messages.length, 1);
         assert.equal(
             messages[0].message,
-            "This image's src attribute is bound to a property 'testSrc' which does not exist in the corresponding script file"
+            "This image's src attribute is bound to a property 'testSrc' that doesn’t exist in the corresponding JavaScript file."
         );
     });
 });

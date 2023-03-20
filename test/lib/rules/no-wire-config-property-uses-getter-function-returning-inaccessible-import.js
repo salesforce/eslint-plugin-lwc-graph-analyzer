@@ -43,7 +43,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `This wire configuration uses a property from a getter function named 'input' that returns an inaccessible import`
+                        message: `This wire configuration uses a property from a getter function named 'input' that returns an inaccessible import.`
                     }
                 ]
             }

@@ -43,7 +43,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Reference to import 'bobo' from an unsupported namespace is not allowed`
+                        message: `This reference to import 'bobo' from an unsupported namespace isn’t allowed.`
                     }
                 ]
             }
