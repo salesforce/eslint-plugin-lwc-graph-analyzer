@@ -52,7 +52,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Functions may not be declared within a getter method`
+                        message: `This function is defined within a getter or template expression. Functions defined within getters or template expressions are not supported.`
                     }
                 ]
             }

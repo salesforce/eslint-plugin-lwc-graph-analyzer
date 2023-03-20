@@ -40,7 +40,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `This wire configuration references a reactive value 'GetData' that is not a local property`
+                        message: `This wire configuration references a reactive value 'GetData' that’s not a local property.`
                     }
                 ]
             }

@@ -27,7 +27,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `This class refers to a parent class from an unsupported namespace`
+                        message: `This class refers to a parent class from an unsupported namespace.`
                     }
                 ]
             }

@@ -16,7 +16,7 @@ describe('Bundle linting', function () {
         assert.equal(messages.length, 1);
         assert.equal(
             messages[0].message,
-            'This analyzer does not support LWCs which render multiple template files'
+            'This analyzer doesn’t support components that render more than one template file.'
         );
     });
 });

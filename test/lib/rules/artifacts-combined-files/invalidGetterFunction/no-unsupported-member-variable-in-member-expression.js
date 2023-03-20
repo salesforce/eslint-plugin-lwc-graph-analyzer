@@ -14,8 +14,7 @@ describe('Bundle linting', function () {
     it('should return correct errors', function () {
         const messages = lintBundle(__filename, 'test.js');
         assert.equal(messages.length, 2);
-        const expected =
-            "Member expression contains reference to unsupported member variable 'blah'";
+        const expected = "This member expression references an unsupported member variable 'blah'.";
         assert.equal(messages[0].message, expected);
         assert.equal(messages[1].message, expected);
     });

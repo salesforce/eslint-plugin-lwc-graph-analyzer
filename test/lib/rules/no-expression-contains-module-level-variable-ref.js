@@ -42,7 +42,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Expression contains a reference to a variable at the module level: 'testModuleVar'`
+                        message: `This getter references a variable defined at the module level: 'testModuleVar'.`
                     }
                 ]
             }

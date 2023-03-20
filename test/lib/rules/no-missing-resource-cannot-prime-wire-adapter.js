@@ -30,7 +30,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `The wire adapter cannot be primed because it refers to a missing resource`
+                        message: `This wire adapter can’t be primed because it refers to a missing resource.`
                     }
                 ]
             }

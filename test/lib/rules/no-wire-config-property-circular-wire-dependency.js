@@ -55,7 +55,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `The wire configuration input property 'wiredOutput3' of this wire is part of a chain of circular wire dependencies, and will result an infinite loop during runtime. Please refactor code to remove the circular dependency. Dependency chain: 'wiredOutput3->wiredOutput4->wiredOutput1->wiredOutput3'`
+                        message: `This input property is part of circular wire dependencies in this chain: 'wiredOutput3->wiredOutput4->wiredOutput1->wiredOutput3'.`
                     }
                 ]
             }

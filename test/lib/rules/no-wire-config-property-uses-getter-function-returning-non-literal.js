@@ -48,7 +48,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `This wire configuration uses a property from a getter function named 'config' that returns a non-literal`
+                        message: `This wire configuration uses a property from a getter function named 'config' that returns a non-literal value, which isn’t supported for static analysis.`
                     }
                 ]
             }

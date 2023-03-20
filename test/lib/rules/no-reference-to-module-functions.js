@@ -55,7 +55,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Call expression contains reference to function defined on the module 'testFunc1'`
+                        message: `This call expression references a function defined in the module 'testFunc1'. Functions defined in a module are not supported.`
                     }
                 ]
             }

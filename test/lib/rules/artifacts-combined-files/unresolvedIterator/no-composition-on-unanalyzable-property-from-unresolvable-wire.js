@@ -16,7 +16,7 @@ describe('Bundle linting', function () {
         assert.equal(messages.length, 1);
         assert.equal(
             messages[0].message,
-            "This iterator iterates upon an unanalyzable property 'contacts' that is wired by a unresolvable wire"
+            "This iterator iterates upon an unanalyzable property 'contacts' that is wired by an unresolvable wire."
         );
     });
 });

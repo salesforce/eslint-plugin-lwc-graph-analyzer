@@ -53,7 +53,7 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `Member expression contains reference to unsupported namespace reference: 'testObject'`
+                        message: `This member expression references an unsupported namespace: 'testObject'.`
                     }
                 ]
             }

@@ -56,22 +56,22 @@ ruleTester.run(
                 filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
                 errors: [
                     {
-                        message: `The wire configuration uses a property 'wiredOutput1' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput1' that’s the output of a wire that can’t be primed for offline use or caching.`
                     },
                     {
-                        message: `The wire configuration uses a property 'wiredOutput2' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput2' that’s the output of a wire that can’t be primed for offline use or caching.`
                     },
                     {
-                        message: `The wire configuration uses a property 'wiredOutput1' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput1' that’s the output of a wire that can’t be primed for offline use or caching.`
                     },
                     {
-                        message: `The wire configuration uses a property 'wiredOutput1' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput1' that’s the output of a wire that can’t be primed for offline use or caching.`
                     },
                     {
-                        message: `The wire configuration uses a property 'wiredOutput2' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput2' that’s the output of a wire that can’t be primed for offline use or caching.`
                     },
                     {
-                        message: `The wire configuration uses a property 'wiredOutput4' that is the output of a non-primeable wire, making this wire non-primeable`
+                        message: `This wire configuration uses a property 'wiredOutput4' that’s the output of a wire that can’t be primed for offline use or caching.`
                     }
                 ]
             }

@@ -1,6 +1,6 @@
 {
     "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "ESLint plugin to analyze data graph in a LWC component",
     "contributors": [
         {
@@ -18,10 +18,6 @@
         {
             "name": "Takashi Arai",
             "url": "https://github.com/sfdctaka"
-        },
-        {
-            "name": "Peter Van Dyk",
-            "url": "https://github.com/pvandyk"
         },
         {
             "name": "Dustin Breese",
@@ -58,7 +54,7 @@
         "chai": "^4.3.7"
     },
     "dependencies": {
-        "@komaci/static-analyzer": "^242.3.2",
+        "@komaci/static-analyzer": "^242.3.7",
         "@lwc/metadata": "2.22.0-0",
         "@lwc/sfdc-compiler-utils": "2.22.0-0",
         "@lwc/errors": "2.22.0",
