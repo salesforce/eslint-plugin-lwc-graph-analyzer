@@ -11,11 +11,13 @@ This plugin wraps the [Komaci static analyzer](https://www.npmjs.com/package/@ko
 To add this plugin to your package/project, install it with your favorite Node.js package manager.
 
 ### yarn
+
 ```sh
 $ yarn add --dev @salesforce/eslint-plugin-lwc-graph-analyzer
 ```
 
 ### npm
+
 ```sh
 $ npm install --save-dev @salesforce/eslint-plugin-lwc-graph-analyzer
 ```
@@ -32,4 +34,4 @@ Here's an example snippet of a `.eslintrc.json` configuration file, that will co
 
 In an SFDX project, you would most commonly add this configuration at the root of your LWC "tree"—which by default resides at `force-app/main/default/lwc/`—since the plugin's analysis applies specifically to Lightning web components.
 
-**Note:** If you have a `.eslintignore` configuration in your project, do *not* add an entry to ignore HTML files. This will cause the plugin to skip linting on LWC bundles that include HTML templates. There are a number of Komaci-based static analysis rules that apply specifically to the HTML template of a Lightning web component bundle.
+**Note:** If you have a `.eslintignore` configuration in your project, do _not_ add an entry to ignore HTML files. This will cause the plugin to skip linting on LWC bundles that include HTML templates. There are a number of Komaci-based static analysis rules that apply specifically to the HTML template of a Lightning web component bundle.
