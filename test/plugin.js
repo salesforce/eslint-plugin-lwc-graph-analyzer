@@ -43,4 +43,24 @@ describe('Plugin', function () {
         });
         assert.equal(keysRulesEqual, true);
     });
+
+    it('recommended rules count equals the number of existing rules', function () {
+        assert.equal(plugin.configs.recommended.rules.length, plugin.rules.length);
+
+        let recommendedRules = Object.keys(plugin.configs.recommended.rules);
+
+        // Strip out scoped module path then sort the array.
+        recommendedRules = recommendedRules
+            .map((rule) => {
+                return rule.replace('@salesforce/lwc-graph-analyzer/', '');
+            })
+            .sort();
+
+        const rules = Object.keys(plugin.rules).sort();
+
+        const rulesEqual = rules.some((element, index) => {
+            return element === recommendedRules[index];
+        });
+        assert.equal(rulesEqual, true);
+    });
 });
