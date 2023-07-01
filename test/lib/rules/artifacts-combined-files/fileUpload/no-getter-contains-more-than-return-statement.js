@@ -14,7 +14,7 @@ describe('Bundle linting', function () {
     it('should return correct errors', function () {
         const messages = lintBundle(__filename, 'test.js');
 
-        // Allint warnings are suppressed using variants of eslint-disable
+        // All lint warnings are suppressed using variants of eslint-disable
         assert.equal(messages.length, 0);
     });
 });
