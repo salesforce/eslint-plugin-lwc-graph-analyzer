@@ -137,7 +137,7 @@ export default class FileUpload extends LightningElement {
     }
 
     async createCdl(recordId, contentDocumentId) {
-        await createRecord({
+        return createRecord({
             apiName: 'ContentDocumentLink',
             fields: {
                 LinkedEntityId: recordId,
