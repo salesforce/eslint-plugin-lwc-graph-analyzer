@@ -1,6 +1,6 @@
 {
     "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "description": "ESLint plugin to analyze data graph in a LWC component",
     "contributors": [
         {
@@ -41,25 +41,25 @@
         "!**/test/"
     ],
     "devDependencies": {
-        "@babel/eslint-parser": "7.19.1",
-        "prettier": "^2.7.1",
-        "jest": "^29.3.1",
-        "jest-extended": "^3.1.0",
+        "@babel/eslint-parser": "7.22.10",
+        "prettier": "^3.0.2",
+        "jest": "^29.6.3",
+        "jest-extended": "^4.0.1",
         "jest-chain": "^1.1.6",
-        "jest-junit": "^14.0.1",
+        "jest-junit": "^16.0.0",
         "jest-sonar-reporter": "^2.0.0",
-        "eslint": "^8.27.0",
+        "eslint": "^8.47.0",
         "eslint-plugin-node": "^11.1.0",
-        "eslint-plugin-eslint-plugin": "^5.0.6",
+        "eslint-plugin-eslint-plugin": "^5.1.1",
         "chai": "^4.3.7"
     },
     "dependencies": {
         "@komaci/static-analyzer": "^242.3.7",
-        "@lwc/metadata": "2.22.0-0",
-        "@lwc/sfdc-compiler-utils": "2.22.0-0",
-        "@lwc/errors": "2.22.0",
-        "@lwc/template-compiler": "2.22.0",
-        "@babel/core": "^7.20.2"
+        "@lwc/metadata": "3.1.2-0",
+        "@lwc/sfdc-compiler-utils": "3.1.2-0",
+        "@lwc/errors": "3.1.3",
+        "@lwc/template-compiler": "3.1.3",
+        "@babel/core": "^7.22.10"
     },
     "scripts": {
         "format": "prettier --list-different \"**/*.js\"",
@@ -80,13 +80,13 @@
         "trailingComma": "none"
     },
     "engines": {
-        "node": ">=16.13.0"
+        "node": ">=18"
     },
     "peerDependencies": {
         "eslint": ">=7"
     },
     "volta": {
-        "node": "16.17.1",
+        "node": "18.17.1",
         "yarn": "1.22.19"
     }
 }
