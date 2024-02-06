@@ -1,6 +1,6 @@
 {
     "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "description": "ESLint plugin to analyze data graph in a LWC component",
     "contributors": [
         {
@@ -54,11 +54,11 @@
         "chai": "^4.3.7"
     },
     "dependencies": {
-        "@komaci/static-analyzer": "^242.3.7",
-        "@lwc/metadata": "3.1.2-0",
-        "@lwc/sfdc-compiler-utils": "3.1.2-0",
-        "@lwc/errors": "3.1.3",
-        "@lwc/template-compiler": "3.1.3",
+        "@komaci/static-analyzer": "^248.1.6",
+        "@lwc/metadata": "3.5.0-0",
+        "@lwc/sfdc-compiler-utils": "3.5.0-0",
+        "@lwc/errors": "~3.5.0",
+        "@lwc/template-compiler": "~3.5.0",
         "@babel/core": "^7.22.10"
     },
     "scripts": {
