@@ -845,33 +845,33 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@komaci/common-shared@242.3.7":
-  version "242.3.7"
-  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-242.3.7.tgz#924ef538b1fba16b7581b69776acc5d463056aa4"
-  integrity sha512-bw8VMv1duX2GBbAGZ8fgAJXBzv5MpEdprgjsNVhjnvaMEI6O2PBI0LrIpNvtob9iiGdKYSEbQ8p4A5WKbNrQxQ==
+"@komaci/common-shared@248.1.6":
+  version "248.1.6"
+  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-248.1.6.tgz#fd169da4e17bb0ab3542345d0de5c022ddbd4d0b"
+  integrity sha512-+QZXundomlO4VOoyUBBCy6wfqwYnct78i6OyEh7hkr4K8zsIZL8nLUqc7jeBuG+qe0L4KOxtULClgryz6EXI7A==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/generator" "^7.9.0"
     "@babel/parser" "^7.9.0"
     "@babel/types" "^7.9.0"
 
-"@komaci/static-analyzer@^242.3.7":
-  version "242.3.7"
-  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-242.3.7.tgz#022bec6c5bb60ba0ddbd9c6fb2f0a67bc523cb8d"
-  integrity sha512-lc1fHEHPRNwOHzrV5ahBIYKdQSB+f9eVUqkj3axk6ZRE+zfol8Yxpz6vHUA7vmZf10OrstBtDbFmWrMSJBTN9w==
+"@komaci/static-analyzer@^248.1.6":
+  version "248.1.6"
+  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-248.1.6.tgz#f7c7b560841e871e254b3e1997372bcaeafbddb6"
+  integrity sha512-bX9vNwxYYIqjdxRNq8ZTglZ4Y4VQvaF4+M15JQwEHIDZK0pyrG5Ao9tIxhiXx1Rp2A9pwKzJep9wegy8E2gI5w==
   dependencies:
     "@babel/types" "^7.9.0"
-    "@komaci/common-shared" "242.3.7"
+    "@komaci/common-shared" "248.1.6"
 
-"@lwc/errors@3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@lwc/errors/-/errors-3.1.3.tgz#cd23456f461a08aeb6dbe657bb34d085d2464584"
-  integrity sha512-e0YZN0sGeRw3HICfaSZGrghHT66/yZ0oSxI8DDJP5+V96I6wG9crT1i7aSgmHcwL99jZrwzSGABcY6MHdyBq7Q==
+"@lwc/errors@3.5.0", "@lwc/errors@~3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@lwc/errors/-/errors-3.5.0.tgz#4e3dbc008c2ea13707da08851cfb872215ee4b42"
+  integrity sha512-OQ9/QqZjd4vRfs7s2bGjb20Vjq8KW7Dbce7aBCE1TTlsVpCJBoGWzUJVoI1ts6EkfGlB1lz5REK0SDIKg6IkzA==
 
-"@lwc/metadata@3.1.2-0":
-  version "3.1.2-0"
-  resolved "https://registry.yarnpkg.com/@lwc/metadata/-/metadata-3.1.2-0.tgz#809eb854f69ae8a23ca5da4e132779731ffc2222"
-  integrity sha512-jGGJgubqygBtjb1VXrwDCF9BctDK6zV9m8zkfDtLqAqZKJLjQuc3i7Fph6pVAha+TO/qjgaExuvGpPSzIc3abw==
+"@lwc/metadata@3.5.0-0":
+  version "3.5.0-0"
+  resolved "https://registry.yarnpkg.com/@lwc/metadata/-/metadata-3.5.0-0.tgz#4172b1a455de9531e638b85dd93f6ce649349442"
+  integrity sha512-wYg2DTLVGWudkbfsHLru/aFr3m2UYou351rP/9UWy1/9vuIMETpJNqOONTLHKE022kYi4n6tm40YhYjiTdaYVg==
   dependencies:
     "@babel/parser" "~7.22.7"
     "@babel/traverse" "~7.22.8"
@@ -880,23 +880,23 @@
     postcss-selector-parser "~6.0.13"
     postcss-value-parser "~4.2.0"
 
-"@lwc/sfdc-compiler-utils@3.1.2-0":
-  version "3.1.2-0"
-  resolved "https://registry.yarnpkg.com/@lwc/sfdc-compiler-utils/-/sfdc-compiler-utils-3.1.2-0.tgz#ac588dbdd0bc51e024a49a4bf342cd2a218f2024"
-  integrity sha512-PGpzAvNXVmbxR7OLJjR55xWK7r2ZcsVsLAz0VBR0KLwUtQciXFXoQ8dGhUM47oTjI45rRtARlMi0LUQSMaewfw==
+"@lwc/sfdc-compiler-utils@3.5.0-0":
+  version "3.5.0-0"
+  resolved "https://registry.yarnpkg.com/@lwc/sfdc-compiler-utils/-/sfdc-compiler-utils-3.5.0-0.tgz#44590a1d1539c52bc92c4bc4a3f2f2637dbc6a0a"
+  integrity sha512-p7kUpuRPuB5a8iAkK5ph15hQmi7h8b2MPZh4dW53VjpKvX2rdXUuIbIdjuhVitMYpXoBmsVrPVA1umrKJ7etHA==
 
-"@lwc/shared@3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@lwc/shared/-/shared-3.1.3.tgz#60d0d3bd2c278be778be56ef5ef60b056cd5d9fb"
-  integrity sha512-JIldvW6QtI+izWXUlE8KQkudwL/t4Wh9McdmbfTMi9oN9v0pCA5q1zRNaSbUdYS5nW8kQDD0tTEIkWrtlhu65w==
+"@lwc/shared@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@lwc/shared/-/shared-3.5.0.tgz#3694ebe6c840d060b9dc370a43198f94ac77ab25"
+  integrity sha512-tbE2sv1woi9q+iiDNPo2qTvMwqs6IwstPfGA1A6bMx9S4l1jVkrerDsPJvYTwaFG2Zc9pUNSX/3ytAXarvuVMg==
 
-"@lwc/template-compiler@3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@lwc/template-compiler/-/template-compiler-3.1.3.tgz#e687de595c9c8f680714c6b7cf18a2048e52edb9"
-  integrity sha512-R8XIVscYsESuYjNWtUCFmBPpvUw+H8iHuuq+jV+5shQnGWh2bqAGeE3Wh+ky6y+UZZNYCWUmSzAlRnJVAaY7KQ==
+"@lwc/template-compiler@~3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@lwc/template-compiler/-/template-compiler-3.5.0.tgz#d026f23c480d541e241f5a91273ee57a4ff64993"
+  integrity sha512-S62vTDFUyw4NjZGzXiZce7E1Jy4SU7b/pd23Yyzolb5jSvhpzfuzsATpjMROm58+dks0EBtS6Qx0hG5zIy7OKA==
   dependencies:
-    "@lwc/errors" "3.1.3"
-    "@lwc/shared" "3.1.3"
+    "@lwc/errors" "3.5.0"
+    "@lwc/shared" "3.5.0"
     acorn "~8.10.0"
     astring "~1.8.6"
     estree-walker "~2.0.2"
