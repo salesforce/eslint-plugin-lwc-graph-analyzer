@@ -54,7 +54,7 @@
         "chai": "^4.3.7"
     },
     "dependencies": {
-        "@komaci/static-analyzer": "^248.1.6",
+        "@komaci/static-analyzer": "^254.0.0",
         "@lwc/metadata": "3.5.0-0",
         "@lwc/sfdc-compiler-utils": "3.5.0-0",
         "@lwc/errors": "~3.5.0",
