@@ -48,7 +48,7 @@
         "jest-chain": "^1.1.6",
         "jest-junit": "^16.0.0",
         "jest-sonar-reporter": "^2.0.0",
-        "eslint": "^8.57.0",
+        "eslint": "^9.8.0",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-eslint-plugin": "^6.2.0",
         "chai": "^4.3.7"
