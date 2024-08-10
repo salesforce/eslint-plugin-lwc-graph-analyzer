@@ -682,23 +682,23 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@komaci/common-shared@250.0.1":
-  version "250.0.1"
-  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-250.0.1.tgz#5a5d6a184c9acae1ae377f2f9b27cb31457f82ac"
-  integrity sha512-6mZV2C9FyLaa/bjMu/o3Vf0i0zpXwMHDMi8WtaNj8dER0fpouTcj9k66neRt/aVRMRdYnKvL/B4LD4HrbSLdqw==
+"@komaci/common-shared@250.0.2":
+  version "250.0.2"
+  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-250.0.2.tgz#0ef433f6b2f683e01bb5a7c89ba2fa10006a5d9d"
+  integrity sha512-wNw7vt+7KFiIuhOjcZRnek9iNSWyRqaRmotVu9SFz7fwkeXsi+TdQU2Ti5Lf8jdKfwh9jrhII5ROC69ZsIxqOA==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/generator" "^7.9.0"
     "@babel/parser" "^7.9.0"
     "@babel/types" "^7.9.0"
 
-"@komaci/static-analyzer@^250.0.1":
-  version "250.0.1"
-  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-250.0.1.tgz#ac5dabe7dbfd6322e2f36697eca10e1cfb2f93e6"
-  integrity sha512-zcDjlyTGpKmslvD9iYi80oNYnmMd93fEWbNnN3GsX7Kb7WXm7LEkPoYuqxT9hdesrCnHmY6hPLv58pk/kjrZgg==
+"@komaci/static-analyzer@^250.0.2":
+  version "250.0.2"
+  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-250.0.2.tgz#d0a0b7db96cf7f19a31bdb15ad9948778039ddce"
+  integrity sha512-bj+/qe4U8utXed3/HGTAdJWOIP6yGcJ3ylZvAI47lBasW0xcDjEiarWQH+8X8+HhopC4aaAS6qrEC6CrxqsBSA==
   dependencies:
     "@babel/types" "^7.9.0"
-    "@komaci/common-shared" "250.0.1"
+    "@komaci/common-shared" "250.0.2"
 
 "@lwc/errors@3.5.0", "@lwc/errors@~3.5.0":
   version "3.5.0"
