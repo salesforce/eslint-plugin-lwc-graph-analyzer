@@ -41,7 +41,7 @@
         "!**/test/"
     ],
     "devDependencies": {
-        "@babel/eslint-parser": "7.25.9",
+        "@babel/eslint-parser": " 7.26.5",
         "prettier": "^3.3.3",
         "jest": "^29.7.0",
         "jest-extended": "^4.0.2",
@@ -54,7 +54,7 @@
         "chai": "^4.5.0"
     },
     "dependencies": {
-        "@komaci/static-analyzer": "^250.0.2",
+        "@komaci/static-analyzer": "^252.1.0",
         "@lwc/metadata": "3.5.0-0",
         "@lwc/sfdc-compiler-utils": "3.5.0-0",
         "@lwc/errors": "~3.5.0",
