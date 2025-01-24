@@ -50,10 +50,10 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/eslint-parser@7.25.9":
-  version "7.25.9"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.25.9.tgz#603c68a63078796527bc9d0833f5e52dd5f9224c"
-  integrity sha512-5UXfgpK0j0Xr/xIdgdLEhOFxaDZ0bRPWJJchRpqOSur/3rZoPbqqki5mm0p4NE2cs28krBEiSM2MB7//afRSQQ==
+"@babel/eslint-parser@ 7.26.5":
+  version "7.26.5"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.26.5.tgz#aa669f4d873f9cd617050cf3c40c19cd96307efb"
+  integrity sha512-Kkm8C8uxI842AwQADxl0GbcG1rupELYLShazYEZO/2DYjhyWXJIOUVOE3tBYm6JXzUCNJOZEzqc4rCW/jsEQYQ==
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals" "5.1.1-v1"
     eslint-visitor-keys "^2.1.0"
@@ -664,23 +664,23 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@komaci/common-shared@250.0.2":
-  version "250.0.2"
-  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-250.0.2.tgz#0ef433f6b2f683e01bb5a7c89ba2fa10006a5d9d"
-  integrity sha512-wNw7vt+7KFiIuhOjcZRnek9iNSWyRqaRmotVu9SFz7fwkeXsi+TdQU2Ti5Lf8jdKfwh9jrhII5ROC69ZsIxqOA==
+"@komaci/common-shared@252.1.0":
+  version "252.1.0"
+  resolved "https://registry.yarnpkg.com/@komaci/common-shared/-/common-shared-252.1.0.tgz#55d901a012d799ff52ad2fb7855b022868827dd8"
+  integrity sha512-1yrQhWooyIOPGdmDubDLQJ7I/pcWtSxCwf9Cdls4TUVrM5IFYfy33w+KH4hEVzQGWfpv3vEEPqH8W+GdzoLUOQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/generator" "^7.9.0"
     "@babel/parser" "^7.9.0"
     "@babel/types" "^7.9.0"
 
-"@komaci/static-analyzer@^250.0.2":
-  version "250.0.2"
-  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-250.0.2.tgz#d0a0b7db96cf7f19a31bdb15ad9948778039ddce"
-  integrity sha512-bj+/qe4U8utXed3/HGTAdJWOIP6yGcJ3ylZvAI47lBasW0xcDjEiarWQH+8X8+HhopC4aaAS6qrEC6CrxqsBSA==
+"@komaci/static-analyzer@^252.1.0":
+  version "252.1.0"
+  resolved "https://registry.yarnpkg.com/@komaci/static-analyzer/-/static-analyzer-252.1.0.tgz#e45d9301e5912c4a24a983ee515e4deafa04e1f6"
+  integrity sha512-CfWsBJFT+K8DNGOxi6NxZZAWeZ4PXdFyU5THGzAKlWD0T0mw58eMVgS+U7bV4MRmEAGfygoZnhxYErFjUZA5PQ==
   dependencies:
     "@babel/types" "^7.9.0"
-    "@komaci/common-shared" "250.0.2"
+    "@komaci/common-shared" "252.1.0"
 
 "@lwc/errors@3.5.0", "@lwc/errors@~3.5.0":
   version "3.5.0"

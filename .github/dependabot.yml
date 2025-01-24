@@ -26,4 +26,4 @@ updates:
           - dependency-name: '@salesforce/dev-scripts'
           # Don't upgrade Komaci until we meet its respective release boundary.
           - dependency-name: '@komaci/static-analyzer'
-            versions: ['>= 252.0.0']
+            versions: ['>= 254.0.0']
