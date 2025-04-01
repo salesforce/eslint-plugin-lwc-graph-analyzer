@@ -4,8 +4,8 @@ export type LwcBundleFile = { filename: string; content: string };
 
 export type LwcBundle = {
     componentBaseName: string;
-    js?: LwcBundleFile | null;
-    htmlTemplates?: LwcBundleFile[] | null;
+    js?: LwcBundleFile;
+    htmlTemplates?: LwcBundleFile[];
 };
 
 export class BundleAnalyzer implements Linter.Processor {
@@ -13,9 +13,9 @@ export class BundleAnalyzer implements Linter.Processor {
     set lwcBundle(value: LwcBundle | null);
     setLwcBundleFromContent(
         componentBaseName: string,
-        jsContent?: string | null,
+        jsContent?: string,
         ...htmlTemplateContent: string[]
-    ): LwcBundle;
+    ): void;
     preprocess(text: string, filename: string): string[];
     postprocess(messages: Linter.LintMessage[][], filename: string): Linter.LintMessage[];
     supportsAutofix: boolean;
