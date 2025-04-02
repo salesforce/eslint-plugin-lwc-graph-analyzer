@@ -29,6 +29,7 @@ declare const lwcGraphAnalyzerPlugin: ESLint.Plugin & {
         base: Linter.Config;
         recommended: Linter.Config;
     };
+    parser: Linter.Parser;
 };
 
 export = lwcGraphAnalyzerPlugin;
