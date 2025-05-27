@@ -42,7 +42,6 @@
         "!**/test/"
     ],
     "devDependencies": {
-        "@babel/eslint-parser": " 7.26.5",
         "chai": "^4.5.0",
         "eslint": "^8.57.1",
         "eslint-plugin-eslint-plugin": "^6.4.0",
@@ -56,6 +55,7 @@
     },
     "dependencies": {
         "@babel/core": "^7.26.0",
+        "@babel/eslint-parser": "^7.27.1",
         "@komaci/static-analyzer": "^252.1.0",
         "@lwc/errors": "~3.5.0",
         "@lwc/metadata": "3.5.0-0",

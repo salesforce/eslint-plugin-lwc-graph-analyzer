@@ -9,14 +9,18 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
-ruleTester.run('@salesforce/lwc-graph-analyzer/no-eval-usage', allRules.rules['no-eval-usage'], {
-    valid: [],
-    invalid: [
-        {
-            code: `
+ruleTester.run(
+    '@salesforce/lwc-graph-analyzer/no-eval-usage',
+    lwcGraphAnalyzer.rules['no-eval-usage'],
+    {
+        valid: [],
+        invalid: [
+            {
+                code: `
                 import { LightningElement, wire, track } from 'lwc';
                 import { getRecord } from 'lightning/uiRecordApi';
                 import findContacts from '@salesforce/apex/ContactController.findContacts';
@@ -48,12 +52,17 @@ ruleTester.run('@salesforce/lwc-graph-analyzer/no-eval-usage', allRules.rules['n
                     @wire(findContacts, { searchKey: '$searchKey' })
                     contacts;
                 }`,
-            filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
-            errors: [
-                {
-                    message: `This call expression contains a non-portable identifier: 'eval'.`
-                }
-            ]
-        }
-    ]
-});
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
+                errors: [
+                    {
+                        message: `This call expression contains a non-portable identifier: 'eval'.`
+                    }
+                ]
+            }
+        ]
+    }
+);

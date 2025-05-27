@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-wire-config-property-circular-wire-dependency',
-    allRules.rules['no-wire-config-property-circular-wire-dependency'],
+    lwcGraphAnalyzer.rules['no-wire-config-property-circular-wire-dependency'],
     {
         valid: [],
         invalid: [
@@ -52,7 +53,11 @@ ruleTester.run(
                     })
                     wiredOutput3;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This input property is part of circular wire dependencies in this chain: 'wiredOutput3->wiredOutput4->wiredOutput1->wiredOutput3'.`

@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-unresolved-parent-class-reference',
-    allRules.rules['no-unresolved-parent-class-reference'],
+    lwcGraphAnalyzer.rules['no-unresolved-parent-class-reference'],
     {
         valid: [],
         invalid: [
@@ -27,7 +28,11 @@ ruleTester.run(
                     /* eslint-disable no-undef */
                     @api testProp;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This class references a parent class that can’t be resolved.`

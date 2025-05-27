@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no_wire_adapter_of_resource_cannot_be_primed',
-    allRules.rules['no-wire-adapter-of-resource-cannot-be-primed'],
+    lwcGraphAnalyzer.rules['no-wire-adapter-of-resource-cannot-be-primed'],
     {
         valid: [],
         invalid: [
@@ -57,7 +58,11 @@ ruleTester.run(
                     @wire(invalidWire, { id: '6xeffa27' })
                     badRecords;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `The wire adapter 'invalidWire' of resource 'lightning/uiAppsApi' can’t be primed.`

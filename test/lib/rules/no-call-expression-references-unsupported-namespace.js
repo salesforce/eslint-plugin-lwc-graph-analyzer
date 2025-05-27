@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-call-expression-references-unsupported-namespace',
-    allRules.rules['no-call-expression-references-unsupported-namespace'],
+    lwcGraphAnalyzer.rules['no-call-expression-references-unsupported-namespace'],
     {
         valid: [],
         invalid: [
@@ -49,7 +50,11 @@ ruleTester.run(
                         return 'foo';
                     }
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This call expression references an unsupported namespace: 'testFunction'.`

@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-wire-configuration-property-using-output-of-non-primeable-wire',
-    allRules.rules['no-wire-configuration-property-using-output-of-non-primeable-wire'],
+    lwcGraphAnalyzer.rules['no-wire-configuration-property-using-output-of-non-primeable-wire'],
     {
         valid: [],
         invalid: [
@@ -53,7 +54,11 @@ ruleTester.run(
                     })
                     wiredOutput3;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This wire configuration uses a property 'wiredOutput1' that’s the output of a wire that can’t be primed for offline use or caching.`
