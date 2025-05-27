@@ -12,6 +12,7 @@ const {
     FilesystemProvider,
     DefaultFilesystemProvider
 } = require('../../../lib/util/filesystem-provider');
+const { join } = require('path');
 
 describe('FilesystemProvider', () => {
     describe('FilesystemProvider (abstract class)', () => {
@@ -22,15 +23,21 @@ describe('FilesystemProvider', () => {
         });
 
         it('should throw error for unimplemented existsSync', () => {
-            expect(() => provider.existsSync('/some/path')).to.throw('Method not implemented');
+            expect(() => provider.existsSync(join('some', 'path'))).to.throw(
+                'Method not implemented'
+            );
         });
 
         it('should throw error for unimplemented readdirSync', () => {
-            expect(() => provider.readdirSync('/some/path')).to.throw('Method not implemented');
+            expect(() => provider.readdirSync(join('some', 'path'))).to.throw(
+                'Method not implemented'
+            );
         });
 
         it('should throw error for unimplemented readFileSync', () => {
-            expect(() => provider.readFileSync('/some/path')).to.throw('Method not implemented');
+            expect(() => provider.readFileSync(join('some', 'path'))).to.throw(
+                'Method not implemented'
+            );
         });
     });
 
@@ -38,6 +45,8 @@ describe('FilesystemProvider', () => {
         let provider;
         const testDir = __dirname;
         const testFile = __filename;
+        const nonexistentFile = join('nonexistent', 'file');
+        const nonexistentDir = join('nonexistent', 'directory');
 
         beforeEach(() => {
             provider = new DefaultFilesystemProvider();
@@ -45,7 +54,7 @@ describe('FilesystemProvider', () => {
 
         it('should check if file exists', () => {
             expect(provider.existsSync(testFile)).to.be.true;
-            expect(provider.existsSync('/nonexistent/file')).to.be.false;
+            expect(provider.existsSync(nonexistentFile)).to.be.false;
         });
 
         it('should read directory contents', () => {
@@ -67,13 +76,13 @@ describe('FilesystemProvider', () => {
 
         it('should throw error for nonexistent file read', () => {
             expect(() => {
-                provider.readFileSync('/nonexistent/file');
+                provider.readFileSync(nonexistentFile);
             }).to.throw();
         });
 
         it('should throw error for nonexistent directory read', () => {
             expect(() => {
-                provider.readdirSync('/nonexistent/directory');
+                provider.readdirSync(nonexistentDir);
             }).to.throw();
         });
     });

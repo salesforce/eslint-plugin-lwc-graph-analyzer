@@ -10,6 +10,7 @@
 const { expect } = require('chai');
 const LwcBundle = require('../../lib/lwc-bundle');
 const { FilesystemProvider } = require('../../lib/util/filesystem-provider');
+const { join } = require('path');
 
 class MockFilesystemProvider extends FilesystemProvider {
     constructor() {
@@ -232,22 +233,22 @@ describe('LwcBundle', () => {
 
     describe('lwcBundleFromFilesystem', () => {
         let mockFs;
+        const testDir = join('path', 'to');
+        const testJsPath = join(testDir, 'test.js');
+        const testHtmlPath = join(testDir, 'test.html');
+        const nonexistentPath = join(testDir, 'nonexistent.js');
+        const cssPath = join(testDir, 'test.css');
 
         beforeEach(() => {
             mockFs = new MockFilesystemProvider();
-            mockFs.addFile('/path/to/test.js', 'export default class Test {}');
-            mockFs.addFile('/path/to/test.html', '<template></template>');
-            mockFs.addDirectory('/path/to', ['test.js', 'test.html']);
+            mockFs.addFile(testJsPath, 'export default class Test {}');
+            mockFs.addFile(testHtmlPath, '<template></template>');
+            mockFs.addDirectory(testDir, ['test.js', 'test.html']);
         });
 
         it('should create bundle from filesystem files', () => {
             const jsContent = 'export default class Test {}';
-            const bundle = LwcBundle.lwcBundleFromFilesystem(
-                jsContent,
-                '/path/to/test.js',
-                '.js',
-                mockFs
-            );
+            const bundle = LwcBundle.lwcBundleFromFilesystem(jsContent, testJsPath, '.js', mockFs);
 
             expect(bundle.componentBaseName).to.equal('test');
             expect(bundle.js.filename).to.equal('test.js');
@@ -261,7 +262,7 @@ describe('LwcBundle', () => {
         it('should return null for non-existent file', () => {
             const bundle = LwcBundle.lwcBundleFromFilesystem(
                 'content',
-                '/path/to/nonexistent.js',
+                nonexistentPath,
                 '.js',
                 mockFs
             );
@@ -270,7 +271,7 @@ describe('LwcBundle', () => {
 
         it('should throw error for unsupported file extension', () => {
             expect(() => {
-                LwcBundle.lwcBundleFromFilesystem('content', '/path/to/test.css', '.css', mockFs);
+                LwcBundle.lwcBundleFromFilesystem('content', cssPath, '.css', mockFs);
             }).to.throw('Unsupported file extension: .css');
         });
     });
