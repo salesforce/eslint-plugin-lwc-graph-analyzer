@@ -18,7 +18,7 @@ const RULE_TESTER_CONFIG = {
             }
         }
     },
-    plugins: ['@salesforce/lwc-graph-analyzer'],
+    plugins: ['@salesforce/lwc-graph-analyzer']
 };
 
 module.exports = {

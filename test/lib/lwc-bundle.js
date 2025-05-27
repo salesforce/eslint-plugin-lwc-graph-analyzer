@@ -9,6 +9,35 @@
 
 const { expect } = require('chai');
 const LwcBundle = require('../../lib/lwc-bundle');
+const { FilesystemProvider } = require('../../lib/util/filesystem-provider');
+
+class MockFilesystemProvider extends FilesystemProvider {
+    constructor() {
+        super();
+        this.files = new Map();
+        this.directories = new Map();
+    }
+
+    addFile(path, content) {
+        this.files.set(path, content);
+    }
+
+    addDirectory(path, files) {
+        this.directories.set(path, files);
+    }
+
+    existsSync(path) {
+        return this.files.has(path);
+    }
+
+    readdirSync(path) {
+        return this.directories.get(path) || [];
+    }
+
+    readFileSync(path) {
+        return this.files.get(path);
+    }
+}
 
 describe('LwcBundle', () => {
     describe('constructor', () => {
@@ -18,11 +47,13 @@ describe('LwcBundle', () => {
                 content: 'export default class Test {}',
                 isPrimary: false
             };
-            const htmlFiles = [{
-                filename: 'test.html',
-                content: '<template></template>',
-                isPrimary: false
-            }];
+            const htmlFiles = [
+                {
+                    filename: 'test.html',
+                    content: '<template></template>',
+                    isPrimary: false
+                }
+            ];
             const bundle = new LwcBundle('test', jsFile, htmlFiles);
 
             expect(bundle.componentBaseName).to.equal('test');
@@ -44,11 +75,13 @@ describe('LwcBundle', () => {
         });
 
         it('should create a bundle with only html files', () => {
-            const htmlFiles = [{
-                filename: 'test.html',
-                content: '<template></template>',
-                isPrimary: false
-            }];
+            const htmlFiles = [
+                {
+                    filename: 'test.html',
+                    content: '<template></template>',
+                    isPrimary: false
+                }
+            ];
             const bundle = new LwcBundle('test', undefined, htmlFiles);
 
             expect(bundle.componentBaseName).to.equal('test');
@@ -136,11 +169,109 @@ describe('LwcBundle', () => {
         it('should handle multiple html templates', () => {
             const htmlContent1 = '<template>1</template>';
             const htmlContent2 = '<template>2</template>';
-            const bundle = LwcBundle.lwcBundleFromContent('test', undefined, htmlContent1, htmlContent2);
+            const bundle = LwcBundle.lwcBundleFromContent(
+                'test',
+                undefined,
+                htmlContent1,
+                htmlContent2
+            );
 
             expect(bundle.htmlTemplates).to.have.length(2);
             expect(bundle.htmlTemplates[0].filename).to.equal('test.html');
             expect(bundle.htmlTemplates[1].filename).to.equal('test.2.html');
         });
     });
-}); 
+
+    describe('getBundleKey', () => {
+        it('should generate a unique key when primary file exists', () => {
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromContent('test', jsContent);
+            bundle.setPrimaryFileByContent(jsContent);
+            const key = bundle.getBundleKey();
+
+            expect(key).to.match(/^test_[0-9a-f-]+\.js$/);
+        });
+
+        it('should throw error when no primary file exists', () => {
+            const bundle = LwcBundle.lwcBundleFromContent('test', 'js content', 'html content');
+            expect(() => bundle.getBundleKey()).to.throw(
+                'Cannot generate bundle key: no primary file exists'
+            );
+        });
+    });
+
+    describe('lwcBundleFromFile', () => {
+        it('should create bundle from JS file', () => {
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromFile(jsContent, '/path/to/test.js', '.js');
+
+            expect(bundle.componentBaseName).to.equal('test');
+            expect(bundle.js.filename).to.equal('test.js');
+            expect(bundle.js.content).to.equal(jsContent);
+            expect(bundle.js.isPrimary).to.be.true;
+            expect(bundle.htmlTemplates).to.be.undefined;
+        });
+
+        it('should create bundle from HTML file', () => {
+            const htmlContent = '<template></template>';
+            const bundle = LwcBundle.lwcBundleFromFile(htmlContent, '/path/to/test.html', '.html');
+
+            expect(bundle.componentBaseName).to.equal('test');
+            expect(bundle.js).to.be.undefined;
+            expect(bundle.htmlTemplates[0].filename).to.equal('test.html');
+            expect(bundle.htmlTemplates[0].content).to.equal(htmlContent);
+            expect(bundle.htmlTemplates[0].isPrimary).to.be.true;
+        });
+
+        it('should throw error for unsupported file extension', () => {
+            expect(() => {
+                LwcBundle.lwcBundleFromFile('content', '/path/to/test.css', '.css');
+            }).to.throw('Unsupported file extension: .css');
+        });
+    });
+
+    describe('lwcBundleFromFilesystem', () => {
+        let mockFs;
+
+        beforeEach(() => {
+            mockFs = new MockFilesystemProvider();
+            mockFs.addFile('/path/to/test.js', 'export default class Test {}');
+            mockFs.addFile('/path/to/test.html', '<template></template>');
+            mockFs.addDirectory('/path/to', ['test.js', 'test.html']);
+        });
+
+        it('should create bundle from filesystem files', () => {
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromFilesystem(
+                jsContent,
+                '/path/to/test.js',
+                '.js',
+                mockFs
+            );
+
+            expect(bundle.componentBaseName).to.equal('test');
+            expect(bundle.js.filename).to.equal('test.js');
+            expect(bundle.js.content).to.equal(jsContent);
+            expect(bundle.js.isPrimary).to.be.true;
+            expect(bundle.htmlTemplates[0].filename).to.equal('test.html');
+            expect(bundle.htmlTemplates[0].content).to.equal('<template></template>');
+            expect(bundle.htmlTemplates[0].isPrimary).to.be.false;
+        });
+
+        it('should return null for non-existent file', () => {
+            const bundle = LwcBundle.lwcBundleFromFilesystem(
+                'content',
+                '/path/to/nonexistent.js',
+                '.js',
+                mockFs
+            );
+            expect(bundle).to.be.null;
+        });
+
+        it('should throw error for unsupported file extension', () => {
+            expect(() => {
+                LwcBundle.lwcBundleFromFilesystem('content', '/path/to/test.css', '.css', mockFs);
+            }).to.throw('Unsupported file extension: .css');
+        });
+    });
+});

@@ -8,7 +8,7 @@
 'use strict';
 
 const { readFileSync } = require('fs');
-const { basename, dirname, join, parse } = require('path');
+const { basename, dirname, join, parse, extname } = require('path');
 const { Linter } = require('eslint');
 const babelParser = require('@babel/eslint-parser');
 const lwcGraphAnalyzer = require('../../../../lib/index');
@@ -93,7 +93,7 @@ function lintProgrammaticBundle(rulePath, target) {
     const srcCode = readFileSync(testPath).toString();
 
     // Create and set the bundle before linting
-    const bundle = LwcBundle.lwcBundleFromFilesystem(testPath);
+    const bundle = LwcBundle.lwcBundleFromFilesystem(srcCode, testPath, extname(testPath));
     lwcGraphAnalyzer.lwcBundle = bundle;
 
     return linter.verify(srcCode, config, {
