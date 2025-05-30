@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-class-refers-to-parent-class-from-unsupported-namespace',
-    allRules.rules['no-class-refers-to-parent-class-from-unsupported-namespace'],
+    lwcGraphAnalyzer.rules['no-class-refers-to-parent-class-from-unsupported-namespace'],
     {
         valid: [],
         invalid: [
@@ -24,7 +25,11 @@ ruleTester.run(
 
                 export default class ScriptTestClass extends Foo {}
                 `,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This class refers to a parent class from an unsupported namespace.`

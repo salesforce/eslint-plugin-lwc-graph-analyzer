@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-functions-declared-within-getter-method',
-    allRules.rules['no-functions-declared-within-getter-method'],
+    lwcGraphAnalyzer.rules['no-functions-declared-within-getter-method'],
     {
         valid: [],
         invalid: [
@@ -49,7 +50,11 @@ ruleTester.run(
 
                     myProp;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This function is defined within a getter or template expression. Functions defined within getters or template expressions are not supported.`

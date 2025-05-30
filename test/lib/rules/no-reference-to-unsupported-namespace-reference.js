@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-reference-to-unsupported-namespace-reference',
-    allRules.rules['no-reference-to-unsupported-namespace-reference'],
+    lwcGraphAnalyzer.rules['no-reference-to-unsupported-namespace-reference'],
     {
         valid: [],
         invalid: [
@@ -40,7 +41,11 @@ ruleTester.run(
                     @wire(getRecord, { recordIds: '0001', field: '$nameField' })
                     record2;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js',
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This reference to import 'bobo' from an unsupported namespace isn’t allowed.`

@@ -8,15 +8,24 @@
 'use strict';
 
 const { assert } = require('chai');
-const { lintBundle } = require('../helper');
+const { lintBundle, lintProgrammaticBundle } = require('../helper');
 
 describe('Bundle linting', function () {
-    it('should return correct errors', function () {
-        const messages = lintBundle(__filename, 'test.html');
+    const expectedMessage =
+        "This image's src attribute is bound to a property 'testSrc' that doesn’t exist in the corresponding JavaScript file.";
+
+    function verifyMessages(messages) {
         assert.equal(messages.length, 1);
-        assert.equal(
-            messages[0].message,
-            "This image's src attribute is bound to a property 'testSrc' that doesn’t exist in the corresponding JavaScript file."
-        );
+        assert.equal(messages[0].message, expectedMessage);
+    }
+
+    it('should return correct errors with file-based bundle', function () {
+        const messages = lintBundle(__filename, 'test.html');
+        verifyMessages(messages);
+    });
+
+    it('should return correct errors with programmatic bundle', function () {
+        const messages = lintProgrammaticBundle(__filename, 'test.html');
+        verifyMessages(messages);
     });
 });

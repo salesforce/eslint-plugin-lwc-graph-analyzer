@@ -9,12 +9,13 @@
 
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
-const allRules = require('../../../lib/index');
+const lwcGraphAnalyzer = require('../../../lib/index');
+const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
     '@salesforce/lwc-graph-analyzer/no-member-expression-reference-to-unsupported-namespace-reference',
-    allRules.rules['no-member-expression-reference-to-unsupported-namespace-reference'],
+    lwcGraphAnalyzer.rules['no-member-expression-reference-to-unsupported-namespace-reference'],
     {
         valid: [],
         invalid: [
@@ -50,7 +51,11 @@ ruleTester.run(
                     @wire(findContacts, { searchKey: '$searchKey' })
                     contacts;
                 }`,
-                filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                filename: {
+                    filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
+                    preprocess: bundleAnalyzer.preprocess,
+                    postprocess: bundleAnalyzer.postprocess
+                },
                 errors: [
                     {
                         message: `This member expression references an unsupported namespace: 'testObject'.`

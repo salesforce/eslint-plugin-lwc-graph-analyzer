@@ -13,6 +13,9 @@ module.exports = {
     testMatch: [
         '<rootDir>/test/plugin.js',
         '<rootDir>/test/lib/rules/**/*.js',
+        '<rootDir>/test/lib/util/**/*.js',
+        '<rootDir>/test/lib/lwc-bundle.js',
+        '<rootDir>/test/lib/processor.js',
         '!**/test/lib/rules/**/test.js',
         '!**/test/lib/rules/artifacts-combined-files/helper.js',
         '!**/test/lib/rules/shared.js'
