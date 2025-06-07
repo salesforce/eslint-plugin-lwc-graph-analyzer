@@ -18,7 +18,8 @@ module.exports = {
         '<rootDir>/test/lib/processor.js',
         '!**/test/lib/rules/**/test.js',
         '!**/test/lib/rules/artifacts-combined-files/helper.js',
-        '!**/test/lib/rules/shared.js'
+        '!**/test/lib/rules/shared.js',
+        '!**/test/lib/**/mock-*.js'
     ],
     moduleFileExtensions: ['js', 'json'],
     testResultsProcessor: 'jest-sonar-reporter',

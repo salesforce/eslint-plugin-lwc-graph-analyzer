@@ -10,6 +10,7 @@
 const { expect } = require('chai');
 const bundleAnalyzer = require('../../lib/processor');
 const LwcBundle = require('../../lib/lwc-bundle');
+const bundleStateManager = require('../../lib/util/bundle-state-manager');
 
 describe('BundleAnalyzer', () => {
     beforeEach(() => {
@@ -95,6 +96,36 @@ describe('BundleAnalyzer', () => {
             expect(bundleAnalyzer.lwcBundle.js.content).to.equal(jsContent);
             expect(bundleAnalyzer.lwcBundle.primaryFile).to.equal(bundleAnalyzer.lwcBundle.js);
             expect(result[0].filename).to.equal(bundleAnalyzer.lwcBundle.getBundleKey());
+        });
+
+        it('should skip processing for files that have already been processed', () => {
+            // First create a bundle and add it to the state manager
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromContent('test', jsContent);
+            // Set the primary file before getting the bundle key
+            bundle.setPrimaryFileByContent(jsContent);
+            const bundleKey = bundle.getBundleKey();
+            bundleStateManager.addBundleState(bundle);
+
+            // Now try to process a file with the same bundle key
+            const result = bundleAnalyzer.preprocess(jsContent, `/some/path/0_${bundleKey}`);
+
+            // Should return the original text without further processing
+            expect(result).to.have.length(1);
+            expect(result[0].text).to.equal(jsContent);
+            expect(result[0].filename).to.equal(`/some/path/0_${bundleKey}`);
+
+            // Clean up
+            bundleStateManager.removeBundleState(bundle);
+        });
+
+        it('should process files that have not been processed before', () => {
+            const jsContent = 'export default class Test {}';
+            const result = bundleAnalyzer.preprocess(jsContent, 'test.js');
+
+            expect(result).to.have.length(1);
+            expect(result[0].text).to.equal(jsContent);
+            expect(bundleAnalyzer.lwcBundle).to.be.instanceof(LwcBundle);
         });
     });
 

@@ -1,6 +1,6 @@
 {
     "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "description": "ESLint plugin to analyze data graph in a LWC component",
     "contributors": [
         {
