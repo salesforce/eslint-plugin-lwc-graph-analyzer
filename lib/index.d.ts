@@ -87,7 +87,8 @@ declare class LwcBundle {
 
 /**
  * ESLint processor that analyzes LWC bundles. This will set up the LWC bundle to be processed
- * by Komaci.
+ * by Komaci. The processor is configured to only process .js and .html files through the
+ * plugin's configuration.
  */
 export class BundleAnalyzer implements Linter.Processor {
     /** Gets the current LWC bundle being processed */

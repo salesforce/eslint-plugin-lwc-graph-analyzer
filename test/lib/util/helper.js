@@ -72,7 +72,8 @@ describe('helper', () => {
             const bundleKey = bundle.getBundleKey();
             const reports = getKomaciReport(
                 '@salesforce/lwc-graph-analyzer/test-rule',
-                `0_${bundleKey}`
+                `0_${bundleKey}`,
+                jsContent
             );
 
             // Should only include the diagnostic for the primary file (test.js)
@@ -114,21 +115,47 @@ describe('helper', () => {
             const bundleKey = bundle.getBundleKey();
             const reports = getKomaciReport(
                 '@salesforce/lwc-graph-analyzer/test-rule',
-                `0_${bundleKey}`
+                `0_${bundleKey}`,
+                jsContent
             );
 
             // Should return empty array since no diagnostics target the primary file
             expect(reports).to.have.length(0);
         });
 
-        it('should return empty array when no bundle is found', () => {
+        it('should create bundle on the fly when no bundle is found but source code is provided', () => {
             // Don't add any bundles to the state manager
+            const jsContent = 'export default class Test {}';
+            const filename = 'test.js';
+            const mockDiagnostics = [
+                {
+                    code: {
+                        value: 'TEST_RULE',
+                        target: { path: filename }
+                    },
+                    message: 'Test message for JS file',
+                    range: {
+                        start: { line: 0, character: 0 },
+                        end: { line: 0, character: 10 }
+                    }
+                }
+            ];
+            mockStaticAnalyzer.setDiagnostics(mockDiagnostics);
+            mockStaticAnalyzer.setDiagnosticMessages({
+                TEST_RULE: {
+                    code: { value: 'TEST_RULE' }
+                }
+            });
+
             const reports = getKomaciReport(
                 '@salesforce/lwc-graph-analyzer/test-rule',
-                '0_nonexistent-bundle'
+                filename,
+                jsContent
             );
 
-            expect(reports).to.be.an('array').that.is.empty;
+            // Should include the diagnostic since we created a bundle on the fly
+            expect(reports).to.have.length(1);
+            expect(reports[0].message).to.equal('Test message for JS file');
         });
 
         it('should return empty array when no matching diagnostic message is found', () => {
@@ -161,7 +188,8 @@ describe('helper', () => {
             const bundleKey = bundle.getBundleKey();
             const reports = getKomaciReport(
                 '@salesforce/lwc-graph-analyzer/test-rule',
-                `0_${bundleKey}`
+                `0_${bundleKey}`,
+                jsContent
             );
 
             expect(reports).to.be.an('array').that.is.empty;
