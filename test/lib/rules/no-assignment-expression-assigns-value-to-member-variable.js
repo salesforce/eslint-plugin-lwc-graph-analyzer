@@ -10,7 +10,6 @@
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
 const lwcGraphAnalyzer = require('../../../lib/index');
-const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
@@ -43,11 +42,7 @@ ruleTester.run(
                     })
                     record = {};
                 }`,
-                filename: {
-                    filename: 'lwc-code.js',
-                    preprocess: bundleAnalyzer.preprocess,
-                    postprocess: bundleAnalyzer.postprocess
-                },
+                filename: 'lwc-code.js',
                 errors: [
                     {
                         message: `This assignment expression can’t assign a value to the member variable 'blah'.`

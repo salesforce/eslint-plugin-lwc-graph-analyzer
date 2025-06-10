@@ -45,9 +45,12 @@ describe('Plugin', function () {
     });
 
     it('recommended rules count equals the number of existing rules', function () {
-        assert.equal(plugin.configs.recommended.overrides[0].rules.length, plugin.rules.length);
+        assert.equal(
+            Object.keys(plugin.configs.recommended.rules).length,
+            Object.keys(plugin.rules).length
+        );
 
-        let recommendedRules = Object.keys(plugin.configs.recommended.overrides[0].rules);
+        let recommendedRules = Object.keys(plugin.configs.recommended.rules);
 
         // Strip out scoped module path then sort the array.
         recommendedRules = recommendedRules

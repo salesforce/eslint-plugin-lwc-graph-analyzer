@@ -10,7 +10,6 @@
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
 const lwcGraphAnalyzer = require('../../../lib/index');
-const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
@@ -53,11 +52,7 @@ ruleTester.run(
                     })
                     wiredOutput3;
                 }`,
-                filename: {
-                    filename: 'lwc-code.js',
-                    preprocess: bundleAnalyzer.preprocess,
-                    postprocess: bundleAnalyzer.postprocess
-                },
+                filename: 'lwc-code.js',
                 errors: [
                     {
                         message: `This input property is part of circular wire dependencies in this chain: 'wiredOutput3->wiredOutput4->wiredOutput1->wiredOutput3'.`

@@ -35,7 +35,7 @@ export default class FileUpload extends LightningElement {
     }
     /* eslint-enable */
 
-    /* eslint-disable no-getter-contains-more-than-return-statement */
+    /* eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement */
     get fileName1() {
         const file = this.files && this.files[0];
         if (file) {
@@ -43,7 +43,7 @@ export default class FileUpload extends LightningElement {
         }
         return undefined;
     }
-    /* eslint-enable no-getter-contains-more-than-return-statement */
+    /* eslint-enable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement */
 
     // eslint-disable-next-line
     get fileName2() {
@@ -54,7 +54,7 @@ export default class FileUpload extends LightningElement {
         return undefined;
     }
 
-    // eslint-disable-next-line no-getter-contains-more-than-return-statement
+    // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
     get fileName3() {
         const file = this.files && this.files[0];
         if (file) {
@@ -73,7 +73,7 @@ export default class FileUpload extends LightningElement {
     }
 
     // prettier-ignore
-    get fileName5() { // eslint-disable-line no-getter-contains-more-than-return-statement
+    get fileName5() { // eslint-disable-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
         const file = this.files && this.files[0];
         if (file) {
             return file.name;

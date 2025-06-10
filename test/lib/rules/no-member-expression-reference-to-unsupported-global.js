@@ -10,7 +10,6 @@
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
 const lwcGraphAnalyzer = require('../../../lib/index');
-const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
@@ -41,11 +40,7 @@ ruleTester.run(
                     @wire(findContacts, { searchKey: '$searchKey' })
                     contacts;
                 }`,
-                filename: {
-                    filename: 'lwc-code.js',
-                    preprocess: bundleAnalyzer.preprocess,
-                    postprocess: bundleAnalyzer.postprocess
-                },
+                filename: 'lwc-code.js',
                 errors: [
                     {
                         message: `This member expression contains a reference to the unsupported global variable 'Object'.`

@@ -10,7 +10,6 @@
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
 const lwcGraphAnalyzer = require('../../../lib/index');
-const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
@@ -33,11 +32,7 @@ ruleTester.run(
                     @wire(getRecord, { recordId: getBlah })
                     records;
                 }`,
-                filename: {
-                    filename: 'lwc-code.js',
-                    preprocess: bundleAnalyzer.preprocess,
-                    postprocess: bundleAnalyzer.postprocess
-                },
+                filename: 'lwc-code.js',
                 errors: [
                     {
                         message: `This wire configuration uses an imported artifact 'getBlah' from an unsupported namespace 'nothing/uiObjectInfoApi'.`

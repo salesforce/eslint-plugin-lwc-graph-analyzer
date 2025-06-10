@@ -8,19 +8,23 @@
 'use strict';
 
 const RULE_TESTER_CONFIG = {
-    parser: require.resolve('@babel/eslint-parser'),
-    parserOptions: {
-        requireConfigFile: false,
-        sourceType: 'module',
-        babelOptions: {
-            parserOpts: {
-                plugins: [['decorators', { decoratorsBeforeExport: false }]]
+    languageOptions: {
+        parser: require('@babel/eslint-parser'),
+        parserOptions: {
+            requireConfigFile: false,
+            sourceType: 'module',
+            babelOptions: {
+                parserOpts: {
+                    plugins: [['decorators', { decoratorsBeforeExport: false }]]
+                }
             }
         }
     },
-    plugins: ['@salesforce/lwc-graph-analyzer']
+    plugins: {
+        '@salesforce/lwc-graph-analyzer': require('../../../lib/index')
+    },
+    processor: require('../../../lib/processor')
 };
-
 module.exports = {
     RULE_TESTER_CONFIG
 };
