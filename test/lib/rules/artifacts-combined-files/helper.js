@@ -5,8 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-'use strict';
-
 const { readFileSync } = require('fs');
 const { basename, dirname, join, parse, extname } = require('path');
 const { Linter } = require('eslint');

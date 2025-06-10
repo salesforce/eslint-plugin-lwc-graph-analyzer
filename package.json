@@ -1,94 +1,100 @@
 {
-    "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "1.0.0",
-    "description": "ESLint plugin to analyze data graph in a LWC component",
-    "contributors": [
-        {
-            "name": "Andrew Huffman",
-            "url": "https://github.com/AndrewHuffman"
-        },
-        {
-            "name": "Kevin Hawkins",
-            "url": "https://github.com/khawkins"
-        },
-        {
-            "name": "Meisam Seyed Aliroteh",
-            "url": "https://github.com/maliroteh-sf"
-        },
-        {
-            "name": "Takashi Arai",
-            "url": "https://github.com/sfdctaka"
-        },
-        {
-            "name": "Dustin Breese",
-            "url": "https://github.com/dbreese"
-        }
-    ],
-    "homepage": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer.git"
+  "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
+  "version": "1.0.0",
+  "description": "ESLint plugin to analyze data graph in a LWC component",
+  "contributors": [
+    {
+      "name": "Andrew Huffman",
+      "url": "https://github.com/AndrewHuffman"
     },
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "directories": {
-        "lib": "lib",
-        "rules": "lib/rules",
-        "test": "test"
+    {
+      "name": "Kevin Hawkins",
+      "url": "https://github.com/khawkins"
     },
-    "files": [
-        "/lib",
-        "!**/test/"
-    ],
-    "devDependencies": {
-        "chai": "^4.5.0",
-        "eslint": "^9.28.0",
-        "eslint-plugin-eslint-plugin": "^6.4.0",
-        "eslint-plugin-node": "^11.1.0",
-        "jest": "^29.7.0",
-        "jest-chain": "^1.1.6",
-        "jest-extended": "^4.0.2",
-        "jest-junit": "^16.0.0",
-        "jest-sonar-reporter": "^2.0.0",
-        "prettier": "^3.5.3"
+    {
+      "name": "Meisam Seyed Aliroteh",
+      "url": "https://github.com/maliroteh-sf"
     },
-    "dependencies": {
-        "@babel/core": "^7.27.4",
-        "@babel/eslint-parser": "^7.27.5",
-        "@komaci/static-analyzer": "^252.1.0",
-        "@lwc/errors": "~3.5.0",
-        "@lwc/metadata": "3.5.0-0",
-        "@lwc/sfdc-compiler-utils": "3.5.0-0",
-        "@lwc/template-compiler": "~3.5.0",
-        "@types/eslint": "^9.6.1"
+    {
+      "name": "Takashi Arai",
+      "url": "https://github.com/sfdctaka"
     },
-    "scripts": {
-        "format": "prettier --list-different \"**/*.js\"",
-        "format:fix": "prettier --write \"**/*.{js,json}\"",
-        "lint": "eslint lib test",
-        "test": "yarn jest --coverage"
-    },
-    "jestSonar": {
-        "sonar56x": true,
-        "reportPath": "reports/coverage",
-        "reportFile": "sonar-report.xml",
-        "indent": 4
-    },
-    "prettier": {
-        "printWidth": 100,
-        "tabWidth": 4,
-        "singleQuote": true,
-        "trailingComma": "none"
-    },
-    "engines": {
-        "node": ">=20"
-    },
-    "peerDependencies": {
-        "eslint": ">=7"
-    },
-    "volta": {
-        "node": "20.18.0",
-        "yarn": "1.22.22"
+    {
+      "name": "Dustin Breese",
+      "url": "https://github.com/dbreese"
     }
+  ],
+  "homepage": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salesforce/eslint-plugin-lwc-graph-analyzer.git"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "rules": "lib/rules",
+    "test": "test"
+  },
+  "files": [
+    "lib/**/*",
+    "!**/test/**"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@typescript-eslint/parser": "^8.34.0",
+    "chai": "^4.5.0",
+    "eslint": "^9.28.0",
+    "eslint-plugin-eslint-plugin": "^6.4.0",
+    "eslint-plugin-n": "^17.19.0",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-chain": "^1.1.6",
+    "jest-extended": "^4.0.2",
+    "jest-junit": "^16.0.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/eslint-parser": "^7.27.5",
+    "@komaci/static-analyzer": "^252.1.0",
+    "@lwc/errors": "~3.5.0",
+    "@lwc/metadata": "3.5.0-0",
+    "@lwc/sfdc-compiler-utils": "3.5.0-0",
+    "@lwc/template-compiler": "~3.5.0",
+    "@types/eslint": "^9.6.1"
+  },
+  "scripts": {
+    "format": "prettier --list-different \"**/*.js\"",
+    "format:fix": "prettier --write \"**/*.{js,json}\"",
+    "lint": "eslint",
+    "test": "yarn jest --coverage",
+    "prepare": "husky"
+  },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": "reports/coverage",
+    "reportFile": "sonar-report.xml",
+    "indent": 4
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "eslint": ">=7"
+  },
+  "volta": {
+    "node": "20.18.0",
+    "yarn": "1.22.22"
+  }
 }

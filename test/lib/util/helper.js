@@ -5,8 +5,6 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-'use strict';
-
 const { expect } = require('chai');
 const { getKomaciReport, setStaticAnalyzerProvider } = require('../../../lib/util/helper');
 const LwcBundle = require('../../../lib/lwc-bundle');
