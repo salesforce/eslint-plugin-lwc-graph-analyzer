@@ -8,10 +8,9 @@
 const { readFileSync } = require('fs');
 const { basename, dirname, join, parse, extname } = require('path');
 const { Linter } = require('eslint');
-const babelParser = require('@babel/eslint-parser');
 const lwcGraphAnalyzer = require('../../../../lib/index');
-const bundleAnalyzer = require('../../../../lib/processor');
 const LwcBundle = require('../../../../lib/lwc-bundle');
+const baseConfig = require('../../../../lib/configs/base');
 
 /**
  * Creates ESLint configuration for a given rule
@@ -20,26 +19,13 @@ const LwcBundle = require('../../../../lib/lwc-bundle');
  */
 function createLinterConfig(rulename) {
     const pluginPrefix = '@salesforce/lwc-graph-analyzer';
-    return {
-        files: ['*.js', '**/*.js', '*.html', '**/*.html'],
-        languageOptions: {
-            parser: babelParser,
-            parserOptions: {
-                requireConfigFile: false,
-                sourceType: 'module',
-                babelOptions: {
-                    parserOpts: {
-                        plugins: [['decorators', { decoratorsBeforeExport: false }]]
-                    }
-                }
-            }
-        },
-        plugins: { [pluginPrefix]: lwcGraphAnalyzer },
-        processor: bundleAnalyzer,
-        rules: {
-            [`${pluginPrefix}/${rulename}`]: 'error'
-        }
+    const ruleConfig = {
+        [`${pluginPrefix}/${rulename}`]: 'error'
     };
+    const config = baseConfig;
+    config.plugins = { [pluginPrefix]: lwcGraphAnalyzer };
+    config.rules = ruleConfig;
+    return config;
 }
 
 /**

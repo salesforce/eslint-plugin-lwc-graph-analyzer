@@ -5,24 +5,10 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-const RULE_TESTER_CONFIG = {
-    languageOptions: {
-        parser: require('@babel/eslint-parser'),
-        parserOptions: {
-            requireConfigFile: false,
-            sourceType: 'module',
-            babelOptions: {
-                parserOpts: {
-                    plugins: [['decorators', { decoratorsBeforeExport: false }]]
-                }
-            }
-        }
-    },
-    plugins: {
-        '@salesforce/lwc-graph-analyzer': require('../../../lib/index')
-    },
-    processor: require('../../../lib/processor')
-};
+// Unless circumstances dictate otherwise, we'll endeavor to use the project's base configuration for our
+// test config.
+const baseConfig = require('../../../lib/configs/base');
+
 module.exports = {
-    RULE_TESTER_CONFIG
+    RULE_TESTER_CONFIG: baseConfig
 };
