@@ -5,12 +5,9 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-'use strict';
-
 const { RuleTester } = require('eslint');
 const { RULE_TESTER_CONFIG } = require('./shared');
 const lwcGraphAnalyzer = require('../../../lib/index');
-const bundleAnalyzer = lwcGraphAnalyzer.processors.bundleAnalyzer;
 const ruleTester = new RuleTester(RULE_TESTER_CONFIG);
 
 ruleTester.run(
@@ -46,11 +43,7 @@ ruleTester.run(
                     @wire(getRecord, { recordId: '$myObjLiteral.prop2' })
                     record2;
                 }`,
-                filename: {
-                    filename: 'lwc-code.js', // Komaci needs a fake filename to be provided from RuleTester or otherwise it fails to run
-                    preprocess: bundleAnalyzer.preprocess,
-                    postprocess: bundleAnalyzer.postprocess
-                },
+                filename: 'lwc-code.js',
                 errors: [
                     {
                         message: `Getters can only contain a return statement.`

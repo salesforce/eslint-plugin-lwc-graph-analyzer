@@ -24,14 +24,35 @@ $ npm install --save-dev @salesforce/eslint-plugin-lwc-graph-analyzer
 
 ## Configuration
 
-Here's an example snippet of a `.eslintrc.json` configuration file, that will configure the `eslint-plugin-lwc-graph-analyzer` plugin. Extending the `plugin:@salesforce/lwc-graph-analyzer/recommended` ESLint configuration will enable static analysis on all `.js` and `.html` files used in your Lightning web components.
+ESLint version-specific configuration examples are provided below. Here are some additional considerations for configuring the plugin.
+
+- In an SFDX project, you would most commonly add your configuration at the root of your LWC "tree"—which by default resides at `force-app/main/default/lwc/`—since the plugin's analysis applies specifically to Lightning web components.
+- Extending the appropriate `recommended` config based on your ESLint version will enable static analysis on all `.js` and `.html` files used in your Lightning web components.
+
+### ESLint &gt;= 9
+
+The default configurations are now in the flat config format supported by ESLint 9 and beyond. Here's how to include the `recommended` config in your flat config:
+
+```javascript
+// eslint.config.mjs
+import js from '@eslint/js';
+import lwcGraphAnalyzerPlugin from '@salesforce/eslint-plugin-lwc-graph-analyzer';
+
+export default [
+    { plugins: { '@salesforce/lwc-graph-analyzer': lwcGraphAnalyzerPlugin } },
+    js.configs.recommended,
+    lwcGraphAnalyzerPlugin.configs.recommended
+];
+```
+
+### ESLint &lt; 9
+
+Configurations for legacy ESLint have moved to `-legacy` extensions. Here's an `.eslintrc.json` configuration file that will configure the `eslint-plugin-lwc-graph-analyzer` plugin with the `recommended-legacy` config:
 
 ```json
 {
-    "extends": ["eslint:recommended", "plugin:@salesforce/lwc-graph-analyzer/recommended"]
+    "extends": ["eslint:recommended", "plugin:@salesforce/lwc-graph-analyzer/recommended-legacy"]
 }
 ```
-
-In an SFDX project, you would most commonly add this configuration at the root of your LWC "tree"—which by default resides at `force-app/main/default/lwc/`—since the plugin's analysis applies specifically to Lightning web components.
 
 **Note:** If you have a `.eslintignore` configuration in your project, do _not_ add an entry to ignore HTML files. This will cause the plugin to skip linting on LWC bundles that include HTML templates. There are a number of Komaci-based static analysis rules that apply specifically to the HTML template of a Lightning web component bundle.
