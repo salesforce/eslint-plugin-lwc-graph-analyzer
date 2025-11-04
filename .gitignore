@@ -2,3 +2,5 @@
 /reports
 test-report.xml
 junit.xml
+
+.DS_Store
