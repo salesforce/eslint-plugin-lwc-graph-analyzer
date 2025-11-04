@@ -34,12 +34,31 @@ ESLint version-specific configuration examples are provided below. Here are some
 The default configurations are now in the flat config format supported by ESLint 9 and beyond. Here's how to include the `recommended` config in your flat config:
 
 ```javascript
+// eslint.config.js
+const { defineConfig } = require("eslint/config");
+const lwcGraphAnalyzerPlugin = require("@salesforce/eslint-plugin-lwc-graph-analyzer");
+
+module.exports = defineConfig([
+    {
+        plugins: {
+            "@salesforce/lwc-graph-analyzer": lwcGraphAnalyzerPlugin,
+        },
+        extends: [lwcGraphAnalyzerPlugin.configs.recommended],
+    },
+]);
+```
+
+```javascript
 // eslint.config.mjs
 import js from '@eslint/js';
 import lwcGraphAnalyzerPlugin from '@salesforce/eslint-plugin-lwc-graph-analyzer';
 
 export default [
-    { plugins: { '@salesforce/lwc-graph-analyzer': lwcGraphAnalyzerPlugin } },
+    { 
+        plugins: { 
+            '@salesforce/lwc-graph-analyzer': lwcGraphAnalyzerPlugin 
+        }
+    },
     js.configs.recommended,
     lwcGraphAnalyzerPlugin.configs.recommended
 ];

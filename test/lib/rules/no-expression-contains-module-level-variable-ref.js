@@ -36,6 +36,9 @@ ruleTester.run(
                     testFunction(val){
                         return val;
                     }
+
+                    @wire(findContacts, { searchKey: '$searchKey' })
+                    contacts;
                 }`,
                 filename: 'lwc-code.js',
                 errors: [

@@ -54,7 +54,11 @@ function lintBundle(rulePath, target) {
     const srcCode = readFileSync(testPath).toString();
 
     const linter = new Linter();
-    return linter.verify(srcCode, config, { filename: testPath, filterCodeBlock });
+    return linter.verify(srcCode, config, {
+        filename: testPath,
+        filterCodeBlock,
+        reportUnusedDisableDirectives: false
+    });
 }
 
 /**
@@ -76,7 +80,8 @@ function lintProgrammaticBundle(rulePath, target) {
     const linter = new Linter();
     return linter.verify(srcCode, config, {
         filename: testPath,
-        filterCodeBlock
+        filterCodeBlock,
+        reportUnusedDisableDirectives: false
     });
 }
 

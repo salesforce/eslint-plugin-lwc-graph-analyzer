@@ -27,6 +27,7 @@ export default class FileUpload extends LightningElement {
 
     /* eslint-disable */
     get fileName() {
+        // This getter voilates the rule no-getter-contains-more-than-return-statement since it is referenced in the template html
         const file = this.files && this.files[0];
         if (file) {
             return file.name;
@@ -35,7 +36,7 @@ export default class FileUpload extends LightningElement {
     }
     /* eslint-enable */
 
-    /* eslint-disable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement */
+    // No longer voilating the rule no-getter-contains-more-than-return-statement
     get fileName1() {
         const file = this.files && this.files[0];
         if (file) {
@@ -43,9 +44,8 @@ export default class FileUpload extends LightningElement {
         }
         return undefined;
     }
-    /* eslint-enable @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement */
 
-    // eslint-disable-next-line
+    // No longer voilating the rule no-getter-contains-more-than-return-statement
     get fileName2() {
         const file = this.files && this.files[0];
         if (file) {
@@ -54,7 +54,7 @@ export default class FileUpload extends LightningElement {
         return undefined;
     }
 
-    // eslint-disable-next-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
+    // No longer voilating the rule no-getter-contains-more-than-return-statement
     get fileName3() {
         const file = this.files && this.files[0];
         if (file) {
@@ -64,7 +64,8 @@ export default class FileUpload extends LightningElement {
     }
 
     // prettier-ignore
-    get fileName4() { // eslint-disable-line
+    // No longer voilating the rule no-getter-contains-more-than-return-statement
+    get fileName4() { 
         const file = this.files && this.files[0];
         if (file) {
             return file.name;
@@ -73,7 +74,7 @@ export default class FileUpload extends LightningElement {
     }
 
     // prettier-ignore
-    get fileName5() { // eslint-disable-line @salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement
+    get fileName5() {
         const file = this.files && this.files[0];
         if (file) {
             return file.name;

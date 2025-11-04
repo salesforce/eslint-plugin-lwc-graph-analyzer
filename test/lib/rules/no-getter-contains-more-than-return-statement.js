@@ -36,9 +36,7 @@ ruleTester.run(
                     }
                 
                     @wire(getRecord, { recordId: '$config' })
-                    record(value) {
-                        console.log(value);
-                    }
+                    record1;
                 
                     @wire(getRecord, { recordId: '$myObjLiteral.prop2' })
                     record2;
