@@ -65,15 +65,14 @@ describe('BundleAnalyzer', () => {
             expect(result[0].filename).to.equal(bundleAnalyzer.lwcBundle.getBundleKey());
         });
 
-        it('should process html file with existing bundle', () => {
+        it('should throw error when preprocessing html file with existing bundle that has no js file', () => {
             const htmlContent = '<template></template>';
             bundleAnalyzer.setLwcBundleFromContent('test', undefined, htmlContent);
-            bundleAnalyzer.lwcBundle.setPrimaryFileByContent(htmlContent);
 
-            const result = bundleAnalyzer.preprocess(htmlContent, 'test.html');
-            expect(result).to.have.length(1);
-            expect(result[0].text).to.equal('');
-            expect(result[0].filename).to.equal(bundleAnalyzer.lwcBundle.getBundleKey());
+            expect(() => bundleAnalyzer.preprocess(htmlContent, 'test.html')).to.throw(
+                Error,
+                'Cannot generate bundle key: no js file exists'
+            );
         });
 
         it('should return empty array when no matching file found in bundle', () => {

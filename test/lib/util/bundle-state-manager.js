@@ -27,7 +27,8 @@ describe('BundleStateManager', () => {
 
         it('should add a bundle with html file as primary', () => {
             const htmlContent = '<template></template>';
-            const bundle = LwcBundle.lwcBundleFromContent('test', undefined, htmlContent);
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromContent('test', jsContent, htmlContent);
             bundle.setPrimaryFileByContent(htmlContent);
 
             const key = bundleStateManager.addBundleState(bundle);
@@ -35,10 +36,11 @@ describe('BundleStateManager', () => {
             expect(bundleStateManager.getBundleByKey(bundle.getBundleKey())).to.equal(bundle);
         });
 
-        it('should return undefined when bundle has no primary file', () => {
-            const bundle = LwcBundle.lwcBundleFromContent('test', 'js content', 'html content');
+        it('should return defined key when bundle has js file', () => {
+            const jsContent = 'export default class Test {}';
+            const bundle = LwcBundle.lwcBundleFromContent('test', jsContent);
             const key = bundleStateManager.addBundleState(bundle);
-            expect(key).to.be.undefined;
+            expect(key).to.not.be.undefined;
         });
     });
 
