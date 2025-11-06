@@ -88,13 +88,13 @@
         "trailingComma": "none"
     },
     "engines": {
-        "node": ">=20"
+        "node": ">=22"
     },
     "peerDependencies": {
         "eslint": ">=7"
     },
     "volta": {
-        "node": "20.18.0",
+        "node": "22.21.1",
         "yarn": "1.22.22"
     }
 }
