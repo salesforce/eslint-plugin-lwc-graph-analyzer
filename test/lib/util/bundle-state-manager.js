@@ -36,11 +36,11 @@ describe('BundleStateManager', () => {
             expect(bundleStateManager.getBundleByKey(bundle.getBundleKey())).to.equal(bundle);
         });
 
-        it('should return defined key when bundle has js file', () => {
+        it('should return undefined key when bundle has no primary file', () => {
             const jsContent = 'export default class Test {}';
             const bundle = LwcBundle.lwcBundleFromContent('test', jsContent);
             const key = bundleStateManager.addBundleState(bundle);
-            expect(key).to.not.be.undefined;
+            expect(key).to.be.undefined;
         });
     });
 

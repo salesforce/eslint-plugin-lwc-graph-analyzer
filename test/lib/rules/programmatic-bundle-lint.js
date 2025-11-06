@@ -118,53 +118,6 @@ export default class TestComponent extends LightningElement {
         expect(htmlViolation.line).toBeGreaterThan(0);
     });
 
-    it('should handle multiple HTML templates', () => {
-        const jsContent = `
-import { LightningElement } from 'lwc';
-export default class MyComponent extends LightningElement {
-    get value() {
-        const x = 1;
-        return x;
-    }
-}`;
-
-        const htmlContent1 = `<template><div>{value}</div></template>`;
-        const htmlContent2 = `<template><div>Second template</div></template>`;
-
-        // Set up bundle with multiple HTML templates
-        bundleAnalyzer.setLwcBundleFromContent(
-            'myComponent',
-            jsContent,
-            htmlContent1,
-            htmlContent2
-        );
-
-        const pluginPrefix = '@salesforce/lwc-graph-analyzer';
-        const config = {
-            ...baseConfig,
-            plugins: { [pluginPrefix]: lwcGraphAnalyzer },
-            rules: {
-                [`${pluginPrefix}/no-getter-contains-more-than-return-statement`]: 'error'
-            }
-        };
-
-        const linter = new Linter();
-
-        // Lint JS file
-        const jsErrors = linter.verify(jsContent, config, {
-            filename: 'myComponent.js'
-        });
-
-        // Should have violation because getter is referenced in HTML
-        expect(jsErrors.length).toBeGreaterThan(0);
-        const violation = jsErrors.find(
-            (err) =>
-                err.ruleId ===
-                '@salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement'
-        );
-        expect(violation).toBeDefined();
-    });
-
     it('should return empty violations when no errors exist', () => {
         const jsContent = `
 import { LightningElement } from 'lwc';

@@ -191,10 +191,10 @@ describe('LwcBundle', () => {
             expect(key).to.match(/^test_[0-9a-f-]+\.js$/);
         });
 
-        it('should throw error when no js file exists', () => {
+        it('should throw error when no primary file exists', () => {
             const bundle = LwcBundle.lwcBundleFromContent('test', undefined, 'html content');
             expect(() => bundle.getBundleKey()).to.throw(
-                'Cannot generate bundle key: no js file exists'
+                'Cannot generate bundle key: no primary file exists'
             );
         });
     });
