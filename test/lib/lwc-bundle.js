@@ -192,7 +192,7 @@ describe('LwcBundle', () => {
         });
 
         it('should throw error when no primary file exists', () => {
-            const bundle = LwcBundle.lwcBundleFromContent('test', undefined, 'html content');
+            const bundle = LwcBundle.lwcBundleFromContent('test', 'js content', 'html content');
             expect(() => bundle.getBundleKey()).to.throw(
                 'Cannot generate bundle key: no primary file exists'
             );

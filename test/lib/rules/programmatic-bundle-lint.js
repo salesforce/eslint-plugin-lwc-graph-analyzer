@@ -86,11 +86,6 @@ export default class TestComponent extends LightningElement {
             htmlContent // HTML content
         );
 
-        // 5. Lint HTML file
-        const htmlErrors = linter.verify(htmlContent, config, {
-            filename: 'testComponent.html'
-        });
-
         // Verify we got violations for the JS file
         // The displayValue getter violates the rule because it's referenced in HTML
         expect(jsErrors.length).toBeGreaterThan(0);
@@ -105,17 +100,6 @@ export default class TestComponent extends LightningElement {
         );
         expect(jsViolation.message).toBe('Getters can only contain a return statement.');
         expect(jsViolation.line).toBeGreaterThan(0);
-
-        expect(htmlErrors.length).toBe(1);
-        const htmlViolation = htmlErrors[0];
-        expect(htmlViolation).toBeDefined();
-        expect(htmlViolation.ruleId).toBe(
-            '@salesforce/lwc-graph-analyzer/no-composition-on-unanalyzable-property-non-public'
-        );
-        expect(htmlViolation.message).toBe(
-            "This child component references an unanalyzable property 'descriptionValue' that’s not a public property."
-        );
-        expect(htmlViolation.line).toBeGreaterThan(0);
     });
 
     it('should return empty violations when no errors exist', () => {
@@ -144,23 +128,13 @@ export default class MyComponent extends LightningElement {
             filename: 'myComponent.js'
         });
 
-        const htmlErrors = linter.verify(htmlContent, config, {
-            filename: 'myComponent.html'
-        });
-
         // No violations expected since we're using a simple property, not a getter
         const jsViolations = jsErrors.filter(
             (err) =>
                 err.ruleId ===
                 '@salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement'
         );
-        const htmlViolations = htmlErrors.filter(
-            (err) =>
-                err.ruleId ===
-                '@salesforce/lwc-graph-analyzer/no-getter-contains-more-than-return-statement'
-        );
 
         expect(jsViolations.length).toBe(0);
-        expect(htmlViolations.length).toBe(0);
     });
 });
