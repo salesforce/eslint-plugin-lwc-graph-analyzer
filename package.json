@@ -1,6 +1,6 @@
 {
     "name": "@salesforce/eslint-plugin-lwc-graph-analyzer",
-    "version": "1.1.0-beta.1",
+    "version": "1.1.0-beta.2",
     "description": "ESLint plugin to analyze data graph in a LWC component",
     "contributors": [
         {
@@ -88,13 +88,13 @@
         "trailingComma": "none"
     },
     "engines": {
-        "node": ">=22"
+        "node": ">=20"
     },
     "peerDependencies": {
         "eslint": ">=7"
     },
     "volta": {
-        "node": "22.21.1",
+        "node": "20.18.0",
         "yarn": "1.22.22"
     }
 }

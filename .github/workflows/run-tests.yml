@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 22, 24 ]
+        node: [ 20, 22 ]
     name: Run tests on Ubuntu with Node ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v4
@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        node: [ 22, 24 ]
+        node: [ 20, 22 ]
     name: Run tests on Windows with Node ${{ matrix.node }}
     steps:
       - uses: actions/checkout@v4
