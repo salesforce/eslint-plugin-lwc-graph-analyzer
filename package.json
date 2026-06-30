@@ -59,7 +59,7 @@
     "typescript-eslint": "^8.59.0"
   },
   "dependencies": {
-    "@babel/core": "^7.29.0",
+    "@babel/core": "^7.29.6",
     "@babel/eslint-parser": "^7.28.6",
     "@komaci/static-analyzer": "^252.1.0",
     "@lwc/errors": "~3.5.0",
