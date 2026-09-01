@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/eslint-parser": "^7.28.6",
+    "@babel/eslint-parser": "^7.29.7",
     "@komaci/static-analyzer": "^252.1.0",
     "@lwc/errors": "~3.5.0",
     "@lwc/metadata": "3.5.0-0",
