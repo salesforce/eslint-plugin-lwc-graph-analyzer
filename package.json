@@ -46,7 +46,7 @@
     "@typescript-eslint/parser": "^8.68.0",
     "chai": "^4.5.0",
     "eslint": "^9.28.0",
-    "eslint-plugin-eslint-plugin": "^6.5.0",
+    "eslint-plugin-eslint-plugin": "^7.6.2",
     "eslint-plugin-n": "^17.24.0",
     "husky": "^9.1.7",
     "jest": "^30.5.0",
